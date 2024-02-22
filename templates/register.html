@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2">
+
+</head>
+<body>
+    <h2>Sign Up</h2>
+    
+
+        <!-- Display flashed messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    <p style="color: red;">{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <form method="post" action="/register">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.username.label }} {{ form.username }}
+        </div>
+        <div>
+            {{ form.email.label }} {{ form.email }}
+        </div>
+        <div>
+            {{ form.password.label }} {{ form.password }}
+        </div>
+        <div>
+            {{ form.confirm_password.label }} {{ form.confirm_password }}
+        </div>
+        <div>
+            {{ form.mobile.label }} {{ form.mobile }}
+        </div>
+        <div>
+            {{ form.aadhar.label }} {{ form.aadhar }}
+        </div>
+        <div>
+            {{ form.vehicleNumber.label }} {{ form.vehicleNumber }}
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>
